@@ -45,3 +45,9 @@ group :development do
   gem 'spring'
 end
 
+gem "clearance"
+
+gem 'bootstrap-sass', '~> 3.3.6'
+
+ gem 'omniauth'
+ gem 'omniauth-facebook'
