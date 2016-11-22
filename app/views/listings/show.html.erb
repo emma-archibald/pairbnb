@@ -1,0 +1,26 @@
+<div align= "center">
+
+
+<p size= 30px>
+  <strong>Address:</strong>
+  <%= @listing.address %>
+</p>
+
+<p>
+  <strong>Nighly Rate:</strong>
+  <%= "$" + @listing.nightly_rate.to_s %>
+</p>
+
+<p>
+  <strong>Bedrooms:</strong>
+  <%= @listing.no_bedrooms %>
+</p>
+
+<p>
+  <strong>Bathrooms:</strong>
+  <%= @listing.no_bathrooms %>
+</p>
+
+<%= link_to 'Back', listings_path %>
+
+</div>

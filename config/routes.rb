@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy]
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
+  resources :listings
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

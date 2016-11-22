@@ -1,0 +1,24 @@
+
+<div class="container">
+  <h1 align="center">All Listings</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Address</th>
+    <th>Nightly Rate ($)</th>
+    <th>Bedrooms</th>
+    <th>Bathrooms</th>
+    <th>View</th>
+  </tr>
+
+  <% @listings.each do |listing| %>
+    <tr>
+      <td><%= listing.address %></td>
+      <td><%= listing.nightly_rate %></td>
+      <td><%= listing.no_bedrooms %></td>
+      <td><%= listing.no_bathrooms %></td>
+      <td><%= link_to 'Show', listing_path(listing) %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
