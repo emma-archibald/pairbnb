@@ -21,6 +21,12 @@
   <%= @listing.no_bathrooms %>
 </p>
 
+<p>
+  <strong>Owner:</strong>
+  <%= @listing.user.email %>
+</p>
+
+
 <%= link_to 'Back', listings_path %>
 
 </div>
