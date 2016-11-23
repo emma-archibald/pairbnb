@@ -1,1 +1,11 @@
-<h1> form here </h1> 
+<%= form_for @listing do |f| %>
+  Address: <%= f.text_field :address %><br />  <br>
+  City : <%= f.text_field :city %><br />  <br>
+  State : <%= f.text_field :state %><br />  <br>
+  Nightly Rate : <%= f.text_field :nightly_rate %><br />  <br>
+  Bedrooms : <%= f.text_field :no_bedrooms %><br />  <br>
+  Bathrooms : <%= f.text_field :no_bathrooms %><br />  <br>
+  Description : <%= f.text_area :description %><br />  <br>
+  Available?:    : <%= f.check_box :availale %><br />  <br>
+  <%= f.submit %>
+<% end %>

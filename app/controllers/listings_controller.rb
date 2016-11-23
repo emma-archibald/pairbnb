@@ -1,4 +1,4 @@
-class ListingsController < ActionController::Base
+class ListingsController < ApplicationController
 
   def index
     # @listings = Listing.all
@@ -27,10 +27,10 @@ class ListingsController < ActionController::Base
       end
     end
 
-    def update
+  def update
     @listing = Listing.find(params[:id])
 
-    if @listing.update(article_params)
+    if @listing.update!(listing_params)
       redirect_to @listing
     else
       render 'edit'
