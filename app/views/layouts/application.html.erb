@@ -7,22 +7,19 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
+  <%= render partial: "layouts/navbar" %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
-<%= render partial: "layouts/navbar" %>
-<div class="container">
-<%= yield %>
-</div>
-<div id="flash">
-  <% flash.each do |key, value| %>
+  <div id="flash">
+    <% flash.each do |key, value| %>
     <div class="flash <%= key %>"><%= value %></div>
-  <% end %>
-</div>
-
-
-
-
-
+    <% end %>
+  </div>
 </body>
+
 </html>

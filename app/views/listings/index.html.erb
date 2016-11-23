@@ -1,29 +1,37 @@
-
-
-
 <div class="container">
   <h1 align="center">All Listings</h1>
   <%= link_to 'Back', root_path %>
+  <%= link_to 'New Listing', new_listing_path %>
 
-<table class="table table-striped">
-  <tr>
-    <th>Address</th>
-    <th>Nightly Rate</th>
-    <th>Bedrooms</th>
-    <th>Bathrooms</th>
-    <th>View</th>
-  </tr>
-
-  <% @listings.each do |listing| %>
+  <table class="table table-striped">
     <tr>
-      <td><%= listing.address %></td>
-      <td><%= number_to_currency listing.nightly_rate %></td>
-      <td><%= listing.no_bedrooms %></td>
-      <td><%= listing.no_bathrooms %></td>
-      <td><%= link_to 'Show', listing_path(listing) %></td>
+      <th>Address</th>
+      <th>Nightly Rate</th>
+      <th>Bedrooms</th>
+      <th>Bathrooms</th>
+      <th>State</th>
+      <th>Available</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
-  <% end %>
-</table>
-<%= will_paginate @listings, renderer: BootstrapPagination::Rails %>
+
+    <% @listings.each do |listing| %>
+      <tr>
+        <td><%= listing.address %></td>
+        <td><%= number_to_currency listing.nightly_rate %></td>
+        <td><%= listing.no_bedrooms %></td>
+        <td><%= listing.no_bathrooms %></td>
+        <td><%= listing.state %></td>
+        <td><%= boolean_to_icon listing.availale %></td>
+        <td><%= link_to 'Show', listing_path(listing) %></td>
+        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+        <td><%= link_to 'Delete', listing_path(listing),
+           method: :delete,
+           data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @listings, renderer: BootstrapPagination::Rails %>
 
 </div>

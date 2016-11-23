@@ -1,32 +1,39 @@
 <div align= "center">
+  <hr>
+
+  <p>
+    <strong>Address:</strong>
+    <%= @listing.address %>
+  </p>
 
 
-<p size= 30px>
-  <strong>Address:</strong>
-  <%= @listing.address %>
-</p>
+  <p>
+    <strong>Nighly Rate:</strong>
+    <%= "$" + @listing.nightly_rate.to_s %>
+  </p>
 
-<p>
-  <strong>Nighly Rate:</strong>
-  <%= "$" + @listing.nightly_rate.to_s %>
-</p>
+  <p>
+    <strong>Bedrooms:</strong>
+    <%= @listing.no_bedrooms %>
+  </p>
 
-<p>
-  <strong>Bedrooms:</strong>
-  <%= @listing.no_bedrooms %>
-</p>
+  <p>
+    <strong>Bathrooms:</strong>
+    <%= @listing.no_bathrooms %>
+  </p>
 
-<p>
-  <strong>Bathrooms:</strong>
-  <%= @listing.no_bathrooms %>
-</p>
+  <p>
+    <strong>Owner:</strong>
+    <%= @listing.user.email %>
+  </p>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @listing.user.email %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @listing.description %>
+  </p>
 
+  <hr>
 
-<%= link_to 'Back', listings_path %>
+  <%= link_to 'Back', listings_path %>
 
 </div>
