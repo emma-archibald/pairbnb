@@ -11,14 +11,17 @@
 <body>
 
   <%= render partial: "layouts/navbar" %>
-  <div class="container">
-    <%= yield %>
-  </div>
 
   <div id="flash">
     <% flash.each do |key, value| %>
     <div class="flash <%= key %>"><%= value %></div>
     <% end %>
+  </div>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
   </div>
 </body>
 

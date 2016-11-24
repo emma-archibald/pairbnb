@@ -32,8 +32,16 @@
     <%= @listing.description %>
   </p>
 
+  <p>
+    <strong>Amenities:</strong>
+    <% @listing.amenities.each do |i| %>
+    <%= i.icon %>
+    <% end %>
+
+  </p>
+
   <hr>
 
-  <%= link_to 'Back', listings_path %>
+  <%= link_to 'Back to Listings', listings_path, class: "btn btn-primary" %>
 
 </div>
