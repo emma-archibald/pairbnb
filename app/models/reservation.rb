@@ -1,18 +1,14 @@
 class Reservation < ActiveRecord::Base
   belongs_to :user
   belongs_to :listing
-  #
-  # validate :check_in_date_cannot_be_in_the_past
-  #
-  #   def check_in_date_cannot_be_in_the_past
-  #     if check_in_date.present? && check_in_date < Date.today
-  #       errors.add(:check_in_date, "can't be in the past")
-  #     end
-  #   end
 
+  validates :check_in_date, inclusion: { in: (Date.today..Date.today+5.years) }
+  validate :check_out_after_check_in
 
-
-
-
+  def check_out_after_check_in
+    if check_out_date < check_in_date
+      errors.add(:check_out_date, "Check-out must be after check-in")
+    end
+  end
 
 end
