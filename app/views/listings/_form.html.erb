@@ -8,8 +8,8 @@
   Description : <%= f.text_area :description %><br />  <br>
   Available?    : <%= f.check_box :availale %><br />  <br>
 
-  <%= f.fields_for :listing_amenities do |x| %>
-
-
+  <%= f.file_field :avatars, multiple: true %>
+  <%= collection_check_boxes(:listing_amenities, :amenity_ids, Amenity.all, :id, :name) %>
   <%= f.submit %>
+
 <% end %>

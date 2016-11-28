@@ -4,6 +4,9 @@
   <div align="center">
     <%= link_to 'Back', root_path, class: "btn btn-primary" %>
     <%= link_to 'New Listing', new_listing_path, class: "btn btn-primary" %>
+    <%= link_to 'New Reservation', new_user_reservation_path(current_user), class: "btn btn-primary" %>
+    <%= link_to 'My Reservations', user_reservations_path(current_user), class: "btn btn-primary" %>
+
   </div>
 
   <table class="table table-striped">

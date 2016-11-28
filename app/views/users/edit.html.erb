@@ -1,20 +1,16 @@
-
 <div class="text-center" style="padding:30px 0">
-
-<div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
-
+  <h1>Edit Profile</h1>
+  <hr>
   <%= form_for @user do |form| %>
-
     <%= render partial: '/users/form', object: form %>
 
     <div class="submit-field">
       <%= form.submit %>
+        <% end %>
     </div>
 
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
-  <% end %>
-</div>
+  <hr>
+
+  <%= link_to 'Back', user_path(@user), class: "btn btn-primary" %>
+
 </div>

@@ -7,7 +7,7 @@ class SessionsController < Clearance::SessionsController
         if authentication.user
           user = authentication.user
           authentication.update_token(auth_hash)
-          @next = root_url
+          @next = listings_path
           @notice = "Signed in!"
         else
           user = User.create_with_auth_and_hash(authentication,auth_hash)

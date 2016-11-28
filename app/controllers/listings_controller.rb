@@ -10,6 +10,7 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
+    @amenities = Amenity.all
     if current_user.tenant?
       flash[:notice] = "Sorry. Tenants are not allowed to add listings"
       return redirect_to listings_path, notice: "Sorry. Tenants are not allowed to add listings"
@@ -19,6 +20,9 @@ class ListingsController < ApplicationController
 
   def edit
       @listing = Listing.find(params[:id])
+      # @listing.avatars = params[:listings][:avatars]
+
+
       if current_user.tenant?
         flash[:notice] = ""
         return redirect_to listings_path, notice: "Sorry. Tenants are not allowed to edit listings"
@@ -30,10 +34,15 @@ class ListingsController < ApplicationController
   end
 
   def create
+
     @listing = Listing.new(listing_params)
     @listing.user = current_user
 
     if @listing.save
+      @amenities = params[:listing_amenities][:amenity_ids]
+      @amenities.each do |x|
+      ListingAmenity.create(listing_id: @listing.id, amenity_id: x)
+      end
       redirect_to @listing
     else
         render 'new'
@@ -44,6 +53,10 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
 
     if @listing.update!(listing_params)
+      @amenities = params[:listing_amenities][:amenity_ids]
+      @amenities.each do |x|
+      ListingAmenity.create(listing_id: @listing.id, amenity_id: x)
+      end
       redirect_to @listing
     else
       render 'edit'
@@ -65,7 +78,8 @@ class ListingsController < ApplicationController
 
   private
   def listing_params
-    params.require(:listing).permit(:address, :user_id, :nightly_rate, :no_bedrooms, :no_bathrooms, :city, :availale, :description, :state)
+    params.require(:listing).permit(:address, :user_id, :nightly_rate, :no_bedrooms, :no_bathrooms, :city, :availale, :description, :state,  {avatars:[]})
   end
+
 
 end
