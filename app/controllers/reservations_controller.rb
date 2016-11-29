@@ -28,10 +28,10 @@ class ReservationsController < ApplicationController
 
     if @reservation.save
       flash[:success] = "Reservation Successfully Created"
-      ReservationMailer.booking_email(current_user, @reservation.listing.user.email, @reservation.id).deliver_now
+      ReservationJob.perform_later(current_user, @reservation.listing.user.email, @reservation.id)
       redirect_to listings_path
     else
-      flash[:success] = "Invalid date. Booking not saved."
+      flash[:notice] = "Invalid date. Booking not saved."
       redirect_to listings_path
 
     end
