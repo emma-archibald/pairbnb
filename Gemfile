@@ -52,8 +52,6 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
-gem 'figaro'
-
 gem 'ffaker'
 
 gem 'will_paginate', '~> 3.1.0'
@@ -69,3 +67,7 @@ gem 'fog'
 gem "letter_opener", :group => :development
 
 gem 'sidekiq'
+
+gem "figaro"
+
+gem 'braintree', '~> 2.69.0'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125023250) do
+ActiveRecord::Schema.define(version: 2016291116150930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 20161125023250) do
     t.json     "avatars"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.integer  "total"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "transaction_id"
+    t.string   "last_4"
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "listing_id"
@@ -61,6 +69,7 @@ ActiveRecord::Schema.define(version: 20161125023250) do
     t.date     "check_out_date"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "payment_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,5 +91,6 @@ ActiveRecord::Schema.define(version: 20161125023250) do
   add_foreign_key "listing_amenities", "listings"
   add_foreign_key "listings", "users"
   add_foreign_key "reservations", "listings"
+  add_foreign_key "reservations", "payments"
   add_foreign_key "reservations", "users"
 end

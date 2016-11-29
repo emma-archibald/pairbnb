@@ -6,10 +6,13 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update, :destroy] do
     resources :reservations
-  end 
+  end
 
+  resources :payments, only: [:new, :create]
 
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
+  get 'payments/client_token'
 
   root 'welcome#index'
 

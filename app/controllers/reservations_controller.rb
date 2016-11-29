@@ -29,7 +29,8 @@ class ReservationsController < ApplicationController
     if @reservation.save
       flash[:success] = "Reservation Successfully Created"
       ReservationJob.perform_later(current_user, @reservation.listing.user.email, @reservation.id)
-      redirect_to listings_path
+      session[:reservation_id] = @reservation.id
+      redirect_to new_payment_path
     else
       flash[:notice] = "Invalid date. Booking not saved."
       redirect_to listings_path
