@@ -27,7 +27,7 @@ class PaymentsController < ApplicationController
 
     if @payment.save
     @reservation.payment_id = @payment.id
-    @reservation.save 
+    @reservation.save
     flash[:notice] = "Payment Successful"
     redirect_to listings_path
 

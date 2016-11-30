@@ -16,21 +16,20 @@ class Reservation < ActiveRecord::Base
   # def not_previously_booked
   #
   #   already_booked_dates = []
-  #   listing = Listing.find_by(@reservation.listing_id)
+  #   listing = self.listing
   #   reservations = listing.reservations.all
   #   reservations.each do |res|
-  #   date_range = (res.check_in_date..res.check_out_date)
-  #   date_range.each do |n|
-  #   already_booked_dates << n
-  #   booking_dates = (params[:check_in_date]..params[:check_out_date])
-  #   booking_dates.each do |date|
-  #     if already_booked_dates.contains?(date)
-  #       errors.add(:check_in_date, "Dates are already booked")
+  #     date_range = (res.check_in_date..res.check_out_date)
+  #     date_range.each do |n|
+  #       already_booked_dates << n
+  #     end
+  #     booking_dates = ((self.check_in_date)..(self.check_out_date))
+  #     booking_dates.each do |date|
+  #       if already_booked_dates.include?(date)
+  #         errors.add(:check_in_date, "Dates are already booked")
   #       end
   #     end
   #   end
   # end
-# end
-
 
 end

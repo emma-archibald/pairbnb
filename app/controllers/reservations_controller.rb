@@ -32,7 +32,7 @@ class ReservationsController < ApplicationController
       session[:reservation_id] = @reservation.id
       redirect_to new_payment_path
     else
-      flash[:notice] = "Invalid date. Booking not saved."
+      flash[:notice] = "Date invalid or already booked. Booking not saved."
       redirect_to listings_path
 
     end
