@@ -1,0 +1,9 @@
+<div align= "center">
+  <h1> Profile </h1>
+  <h4> <%= @user.email %> </h4>
+    <td><%= link_to 'Edit', edit_user_path(@user) %></td>
+  <hr>
+
+  <%= image_tag (@user.avatar.medium.url) %>
+
+</div>

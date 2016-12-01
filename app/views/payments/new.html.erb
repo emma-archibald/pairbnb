@@ -1,0 +1,25 @@
+<h2> Checkout Page </h2>
+
+
+<form id="checkout-form" action="/payments" method="post">
+  <div id="error-message"></div>
+  <div class="form-group">
+    <label for="card-number">Card Number</label>
+    <div class="hosted-field" id="card-number"></div>
+  </div>
+
+  <div class="form-group">
+    <label for="cvv">CVV</label>
+    <div class="hosted-field" id="cvv"></div>
+  </div>
+
+  <div class="form-group">
+    <label for="expiration-date">Expiration Date</label>
+    <div class="hosted-field" id="expiration-date"></div>
+  </div>
+
+  <div class="form-group">
+    <input type="hidden" name="payment-method-nonce" >
+    <input type="submit" value="Pay" disabled id="submitBtn">
+  </div>
+</form>

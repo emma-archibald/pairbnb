@@ -1,0 +1,8 @@
+
+
+<%= form_for ([@user, @reservation]) do |f| %>
+  Property ID: <%= f.text_field :listing_id %><br />  <br>
+  Check-in : <%= f.date_field :check_in_date %><br />  <br>
+  Check-out : <%= f.date_field :check_out_date %><br />  <br>
+  <%= f.submit %>
+<% end %>

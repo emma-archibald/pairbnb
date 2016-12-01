@@ -45,3 +45,31 @@ group :development do
   gem 'spring'
 end
 
+gem "clearance"
+
+gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+gem 'ffaker'
+
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'will_paginate-bootstrap'
+
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+
+gem 'mini_magick'
+
+gem 'fog'
+
+gem "letter_opener", :group => :development
+
+gem 'sidekiq'
+
+gem "figaro"
+
+gem 'braintree', '~> 2.69.0'
+
+gem 'pg_search', '~> 1.0', '>= 1.0.6'

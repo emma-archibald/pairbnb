@@ -1,0 +1,34 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">PairBnB</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href='/listings'> View Listings</a></li>
+      <% if current_user %>
+      <li><a href='/users/<%= current_user.id %>'</a> My Profile</a></li>
+      <% end %> 
+    </ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+
+       <% if current_user %>
+       <li>
+         <%= link_to sign_out_path, method: :delete do %>
+           <span class="glyphicon glyphicon-log-out"></span>Logout
+           <% end %>
+       </li>
+
+        <% else %>
+     <li><a href="/sign_up"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+     <li><a href="/sign_in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <% end %>
+   </ul>
+
+
+  </div>
+</nav>

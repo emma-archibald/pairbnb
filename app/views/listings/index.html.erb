@@ -1,0 +1,106 @@
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+<br>
+<br>
+<br>
+<br>
+
+      <%= form_tag listings_path, method:"get" do %>
+
+      <%= label_tag :search, nil, :class => "control-label" %>
+      <%= search_field_tag :description, params[:description], class: 'form-control' %> <br>
+
+      <%= label_tag :state, nil, :class => "control-label" %>
+      <%= select_tag :state, options_from_collection_for_select(@all_listings, "to_s", "to_s", params[:state]), class: 'form-control' %><br>
+
+
+      <%= label_tag :bedrooms, nil, :class => "control-label" %>
+      <%= number_field_tag :no_bedrooms, params[:no_bedrooms], in: 1...10, class: 'form-control' %><br>
+
+      <%= label_tag :bathrooms, nil, :class => "control-label" %>
+      <%= number_field_tag :no_bathrooms, params[:no_bathrooms], in: 1...5, class: 'form-control' %><br>
+
+      <%= label_tag :min_Price, nil, :class => "control-label" %>
+      <%= number_field_tag :min, params[:min], in: 0...5000, class: 'form-control' %><br>
+
+      <%= label_tag :max_price, nil, :class => "control-label" %>
+      <%= number_field_tag :max, params[:max], in: 0...5000, class: 'form-control' %><br>
+
+      <%= label_tag :amenities, nil, :class => "control-label" %><br>
+        <%= check_box_tag "wifi", "WiFi" %>
+        <%= label_tag "WiFi" %><br>
+        <%= check_box_tag "gym", "Gym" %>
+        <%= label_tag "Gym" %><br>
+        <%= check_box_tag "pool", "Pool" %>
+        <%= label_tag "Pool" %><br>
+        <%= check_box_tag "breakfast", "Breakfast" %>
+        <%= label_tag "Breakfast" %><br>
+        <%= check_box_tag "aircon", "Aircon" %>
+        <%= label_tag "Aircon" %><br>
+        <%= check_box_tag "parking", "Free Parking" %>
+        <%= label_tag "Parking" %><br>
+        <%= check_box_tag "restaurant", "Restaurant" %>
+        <%= label_tag "Restaurant" %><br>
+
+        <%= submit_tag "Search" %>
+        <% end %>
+
+
+
+
+
+  </div>
+
+
+  <div class="col-sm-9">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h3>ALL LISTINGS</h3>
+          <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+          <%= link_to 'New Listing', new_listing_path, class: "btn btn-primary" %>
+          <%= link_to 'New Reservation', new_user_reservation_path(current_user), class: "btn btn-primary" %>
+          <%= link_to 'My Reservations', user_reservations_path(current_user), class: "btn btn-primary" %><hr>
+      </div>
+    </div>
+    <div class="row">
+      <% @listings.each do |listing| %>
+        <div class="col-sm-6">
+          <% if listing.avatars? %>
+            <%= image_tag (listing.avatars[0].square.url) %>
+          <% end %>
+
+          <h4 class="group inner list-group-item-heading">
+              <%= listing.address %>
+          </h4>
+          <div class="col-xs-12 col-md-6">
+              <p class="lead">
+                  <%= number_to_currency listing.nightly_rate%>
+              </p>
+          </div><br><br>
+
+          <p class="group inner list-group-item-text">
+            <h6> 🛏<%= listing.no_bedrooms %> 🚽 <%= listing.no_bathrooms %>  <h6>
+            <%= listing.state %>
+            <h6> Property ID: <%= listing.id %> </h6>
+          <br></p>
+
+
+          <%= link_to 'Show', listing_path(listing) %>
+          <%= link_to 'Edit', edit_listing_path(listing) %>
+          <%= link_to 'Delete', listing_path(listing),
+             method: :delete,
+             data: { confirm: 'Are you sure?' } %>
+             <br><hr>
+        </div>
+      <% end %>
+    </div>
+
+
+
+
+            <%= will_paginate @listings, renderer: BootstrapPagination::Rails %>
+           </div>
+
+         </div>
+       </div>

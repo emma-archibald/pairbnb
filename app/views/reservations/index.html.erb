@@ -1,0 +1,24 @@
+<h2> Reservations </h2>
+
+
+  <table class="table table-striped">
+    <tr>
+      <th>Property ID</th>
+      <th>Address </th>
+      <th>Check In</th>
+      <th>Check Out</th>
+      <th>Total Price</th>
+
+
+      <% @all_reservations.each do |reservation| %>
+
+      <tr>
+        <td><%= reservation.listing_id %></td>
+        <td><%= reservation.listing.address %></td>
+        <td><%= reservation.check_in_date %></td>
+        <td><%= reservation.check_out_date %></td>
+        <td><%= number_to_currency reservation.payment.total %></td> 
+
+      </tr>
+      <% end %>
+    </table>
