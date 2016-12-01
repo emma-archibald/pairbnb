@@ -1,7 +1,24 @@
 class ListingsController < ApplicationController
 
   def index
-    @listings = Listing.paginate(:page => params[:page], :per_page => 3)
+    @listings = Listing.paginate(:page => params[:page], :per_page => 6)
+    @listings = @listings.state(params[:state]) if params[:state].present?
+    @listings = @listings.no_bedrooms(params[:no_bedrooms]) if params[:no_bedrooms].present?
+    @listings = @listings.no_bathrooms(params[:no_bathrooms]) if params[:no_bathrooms].present?
+    @listings = @listings.nightly_rate(params[:min], params[:max]) if params[:min].present?
+    @listings = @listings.search_by_description(params[:description]) if params[:description].present?
+
+
+    amenities = []
+    [:wifi, :gym, :pool, :breakfast, :aircon, :restaurant, :parking].each do |name|
+      amenities << params[name] if params[name].present?
+    end
+    @listings = @listings.has_amenities(amenities) if amenities.count > 0
+
+    # ids = @listings.pluck(:id).uniq
+    # @listings = Listing.where(id: ids).paginate(:page => params[:page], :per_page => 6)
+
+    @all_listings = Listing.states
   end
 
   def show

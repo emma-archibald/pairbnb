@@ -71,3 +71,5 @@ gem 'sidekiq'
 gem "figaro"
 
 gem 'braintree', '~> 2.69.0'
+
+gem 'pg_search', '~> 1.0', '>= 1.0.6'

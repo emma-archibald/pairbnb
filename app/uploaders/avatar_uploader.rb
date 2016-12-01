@@ -22,7 +22,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :square do
-    process :resize_to_limit => [300, 300]
+    process :resize_to_fit => [300, 300]
   end
 
   def extension_whitelist
